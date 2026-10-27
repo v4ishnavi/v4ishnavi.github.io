@@ -27,8 +27,6 @@ jobs:
       # Posts come from the committed content/posts.json: Substack blocks GitHub's runners,
       # so `npm run sync` has to be run locally.
       - run: npm run build
-        env:
-          NEXT_PUBLIC_BASE_PATH: /vaish
       - run: touch out/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:

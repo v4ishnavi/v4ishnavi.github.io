@@ -3,7 +3,7 @@
 Personal site for Vaishnavi Shivkumar: research, writing and other things. It's inspired by the
 professional/personal toggle on [thariq.io](https://www.thariq.io/).
 
-Live at **https://v4ishnavi.github.io/vaish/**.
+Live at **https://v4ishnavi.github.io/**.
 
 ## Run locally
 
@@ -41,5 +41,5 @@ in `scripts/sync-substack.mjs`, which go under ✳ life. *The girlboss dad* is a
 ## Deploy
 
 Every push to `main` builds a static export and publishes it to GitHub Pages
-(`.github/workflows/deploy.yml`). For a custom domain, add it under the repo's Settings → Pages and set
-`NEXT_PUBLIC_BASE_PATH` to an empty string in the workflow.
+(`.github/workflows/deploy.yml`). It is served from the domain root, so no base path is set. For a custom domain, add it under the repo's
+Settings → Pages.
