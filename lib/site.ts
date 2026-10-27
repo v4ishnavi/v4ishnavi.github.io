@@ -6,6 +6,7 @@ export const profile = {
   email: 'vaishnavishivkumar0@gmail.com',
   links: [
     {label: 'GitHub', url: 'https://github.com/v4ishnavi'},
+    {label: 'Google Scholar', url: 'https://scholar.google.com/citations?hl=en&user=nNo2S7oAAAAJ&view_op=list_works&sortby=pubdate', mode: 'research'},
     {label: 'Substack', url: 'https://vaishnavishivkumar.substack.com', mode: 'research'},
     {label: 'Substack', url: 'https://tacksforsnaccs.substack.com', mode: 'life'},
     {label: 'LinkedIn', url: 'https://www.linkedin.com/in/vaishnavi-shivkumar-546036258/'},
