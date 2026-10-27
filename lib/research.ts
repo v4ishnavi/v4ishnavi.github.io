@@ -8,6 +8,7 @@ export type ResearchItem = {
   summary: string;
   details: string[];
   points?: string[];
+  outro?: string;
   links?: Link[];
   image?: {src: string; caption: string};
   current?: boolean;
@@ -25,7 +26,8 @@ export const research: ResearchItem[] = [
     status: 'ongoing',
     summary: 'What my days at Mastercard AI Garage look like.',
     details: [],
-    points: ['Data Cleaning', 'Product Deploying', 'Corporate Research'],
+    points: ['Working with Big Data', 'Designing and Deploying algorithms', 'Corporate Research'],
+    outro: '... and other fintech things!',
   },
   {
     slug: 'time-in-video-models',

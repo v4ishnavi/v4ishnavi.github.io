@@ -48,6 +48,7 @@ export default async function ResearchPage({params}: {params: Promise<{slug: str
             ))}
           </ul>
         )}
+        {r.outro && <p>{r.outro}</p>}
       </div>
       {r.links && (
         <div className="links">
