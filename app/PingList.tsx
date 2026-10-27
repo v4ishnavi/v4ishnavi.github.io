@@ -1,25 +1,40 @@
 import {formatDate, ping, pingAuthorUrl} from '../lib/posts';
 
 export default function PingList() {
+  const series = ping.filter((a) => a.designs);
+
   return (
     <>
-      <ul className="rows">
+      <ul className="ping">
         {ping.map((a) => (
           <li key={a.url}>
-            <a className="row" href={a.url} target="_blank" rel="noreferrer">
-              <div>
-                <strong>{a.title}</strong>
-                <small>
-                  {formatDate(a.date)} · {a.excerpt}
-                </small>
-              </div>
-              <span className="arrow">↗</span>
+            <a className="ping-card" href={a.url} target="_blank" rel="noreferrer">
+              {a.image && <img src={a.image} alt={`Cover design for ${a.title}`} loading="lazy" />}
+              <strong>{a.title} ↗</strong>
+              <small>
+                {formatDate(a.date)} · {a.excerpt}
+              </small>
             </a>
           </li>
         ))}
       </ul>
+      {series.map((a) => (
+        <div key={a.url}>
+          <p className="soft designs-label">Designs from {a.title}</p>
+          <ul className="designs">
+            {a.designs!.map((d) => (
+              <li key={d.url}>
+                <a href={d.url} target="_blank" rel="noreferrer">
+                  <img src={d.image} alt={`Design for ${d.title}`} loading="lazy" />
+                  <span>{d.title}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
       <p className="copy more">
-        All of it on{' '}
+        More on{' '}
         <a href={pingAuthorUrl} target="_blank" rel="noreferrer">
           Ping! ↗
         </a>

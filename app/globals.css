@@ -350,6 +350,77 @@ button.inline {
   text-align: center;
 }
 
+/* Ping! articles with their cover designs */
+
+.ping {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.ping-card {
+  display: block;
+}
+
+.ping-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  margin-bottom: 14px;
+  transition: transform 0.2s;
+}
+
+.ping-card:hover img {
+  transform: translateY(-2px);
+}
+
+.ping-card strong {
+  display: block;
+  font-weight: 500;
+}
+
+.ping-card small {
+  display: block;
+  color: var(--muted);
+  font-size: 13.5px;
+  margin-top: 2px;
+}
+
+.designs-label {
+  margin: 28px 0 10px;
+}
+
+.designs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.designs img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  transition: border-color 0.2s;
+}
+
+.designs a:hover img {
+  border-color: var(--accent-2);
+}
+
+.designs span {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+  line-height: 1.35;
+}
+
 /* Lists */
 
 .row {
@@ -612,6 +683,14 @@ footer .soft {
   .pub-thumb {
     width: 84px;
     height: 60px;
+  }
+
+  .ping {
+    grid-template-columns: 1fr;
+  }
+
+  .designs {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .hero-top {

@@ -20,7 +20,8 @@ export type Post = {
 export const posts = data as Post[];
 
 // Articles for Ping!, IIIT Hyderabad's student publication. These link out to pingiiit.org.
-export type PingArticle = {title: string; date: string; url: string; excerpt: string};
+export type PingDesign = {title: string; url: string; image: string};
+export type PingArticle = {title: string; date: string; url: string; excerpt: string; image?: string; designs?: PingDesign[]};
 export const ping = pingData as PingArticle[];
 export const pingAuthorUrl = 'https://pingiiit.org/author/vaishnavi-shivkumar/';
 
