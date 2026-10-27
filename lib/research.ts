@@ -10,6 +10,8 @@ export type ResearchItem = {
   links?: Link[];
   image?: {src: string; caption: string};
   current?: boolean;
+  // Already listed under Publications on the homepage.
+  published?: boolean;
 };
 
 // Ordered as they appear on the homepage.
@@ -47,6 +49,7 @@ export const research: ResearchItem[] = [
   },
   {
     slug: 'code-mixed-model-merging',
+    published: true,
     image: {src: '/images/code-mixed.jpg', caption: 'First page of the CODS 2025 paper.'},
     title: 'Code-Mixed Model Merging',
     tags: 'NLP · Model merging · CODS 2025',
@@ -60,6 +63,7 @@ export const research: ResearchItem[] = [
   },
   {
     slug: 'opium',
+    published: true,
     image: {src: '/images/opium.jpg', caption: 'Figure 1 from the OPIUM paper.'},
     title: 'OPIUM',
     tags: 'Steering · Over-refusal · ICML 2026 MI Workshop',
@@ -72,6 +76,7 @@ export const research: ResearchItem[] = [
   },
   {
     slug: 'metagmt',
+    published: true,
     image: {src: '/images/metagmt.jpg', caption: 'The MetaGMT pipeline (Figure 1 of the preprint).'},
     title: 'MetaGMT',
     tags: 'Graph ML · Explainability · Meta-learning',

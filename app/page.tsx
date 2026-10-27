@@ -100,11 +100,6 @@ export default function Home() {
       </section>
 
       <section className="only-research">
-        <h2>Past research</h2>
-        <ResearchList items={research.filter((r) => !r.current)} />
-      </section>
-
-      <section className="only-research">
         <h2>Publications</h2>
         <ul className="rows">
           {publications.map((p) => (
@@ -122,6 +117,11 @@ export default function Home() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="only-research">
+        <h2>Other past research</h2>
+        <ResearchList items={research.filter((r) => !r.current && !r.published)} />
       </section>
 
       <section id="writing">
