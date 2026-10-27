@@ -582,6 +582,58 @@ a.card:hover {
 
 /* Detail pages */
 
+/* Side index on long posts; only on screens wide enough to sit beside the text. */
+.post {
+  position: relative;
+}
+
+.toc {
+  display: none;
+}
+
+@media (min-width: 1240px) {
+  .toc {
+    display: block;
+    position: absolute;
+    top: 40px;
+    bottom: 0;
+    right: calc(100% + 48px);
+    width: 210px;
+  }
+
+  .toc > div {
+    position: sticky;
+    top: 32px;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+  }
+}
+
+.toc-title {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.toc li {
+  font-size: 13px;
+  line-height: 1.4;
+  padding: 5px 0 5px 12px;
+  border-left: 2px solid var(--line);
+  color: var(--muted);
+}
+
+.toc li.sub {
+  padding-left: 22px;
+}
+
+.toc li.active {
+  border-left-color: var(--accent-2);
+  color: var(--text);
+}
+
 .detail {
   padding: 40px 0 80px;
   min-height: 70vh;
@@ -786,4 +838,9 @@ footer .soft {
     flex-direction: column;
     gap: 6px;
   }
+}
+
+.prose h2[id],
+.prose h3[id] {
+  scroll-margin-top: 24px;
 }

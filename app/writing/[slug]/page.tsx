@@ -2,6 +2,8 @@ import type {Metadata} from 'next';
 import Link from 'next/link';
 import {notFound} from 'next/navigation';
 import {formatDate, posts} from '../../../lib/posts';
+import {withToc} from '../../../lib/toc';
+import Toc from './Toc';
 
 export const dynamicParams = false;
 
@@ -26,8 +28,11 @@ export default async function WritingPage({params}: {params: Promise<{slug: stri
   const newer = sameMode[j - 1];
   const older = sameMode[j + 1];
 
+  const {html, toc} = withToc(p.html);
+
   return (
-    <main className="detail">
+    <main className="detail post">
+      {toc.length >= 3 && <Toc entries={toc} />}
       <Link className="back" href="/writing/">
         ← writing
       </Link>
@@ -36,7 +41,7 @@ export default async function WritingPage({params}: {params: Promise<{slug: stri
       </p>
       <h1 className="post-title">{p.title}</h1>
       {p.subtitle && p.subtitle !== p.title && <p className="intro">{p.subtitle}</p>}
-      <article className="prose" dangerouslySetInnerHTML={{__html: p.html}} />
+      <article className="prose" dangerouslySetInnerHTML={{__html: html}} />
       <p className="original">
         Originally published on{' '}
         <a href={p.url} target="_blank" rel="noreferrer">
