@@ -12,6 +12,9 @@ const MODE_OVERRIDES = {
   'the-girlboss-dad': 'life',
 };
 
+// Posts that stay on Substack only.
+const EXCLUDE = new Set(['october-9th-2026-0030', '256', 'ordinary-day', 'the-woes-in-between']);
+
 const cdata = (s) => s?.replace(/^<!\[CDATA\[([\s\S]*)\]\]>$/, '$1').trim() ?? '';
 const tag = (item, name) => cdata(item.match(new RegExp(`<${name}[^>]*>([\\s\\S]*?)</${name}>`))?.[1]);
 
@@ -65,14 +68,16 @@ async function readFeed({publication, url, mode}) {
     const slug = link.split('/p/')[1]?.replace(/\/$/, '');
     const html = clean(tag(item, 'content:encoded'));
     const words = toText(html).split(' ').length;
+    const postMode = MODE_OVERRIDES[slug] ?? mode;
     return {
       slug,
       title: tag(item, 'title').trim(),
-      subtitle: tag(item, 'description').trim(),
+      // Personal posts are shown without their Substack subtitles.
+      subtitle: postMode === 'life' ? '' : tag(item, 'description').trim(),
       date: new Date(tag(item, 'pubDate')).toISOString().slice(0, 10),
       url: link,
       publication,
-      mode: MODE_OVERRIDES[slug] ?? mode,
+      mode: postMode,
       cover: item.match(/<enclosure url="([^"]+)"/)?.[1] ?? null,
       readingMinutes: Math.max(1, Math.round(words / 230)),
       html,
@@ -80,7 +85,7 @@ async function readFeed({publication, url, mode}) {
   });
 }
 
-const posts = (await Promise.all(FEEDS.map(readFeed))).flat();
+const posts = (await Promise.all(FEEDS.map(readFeed))).flat().filter((p) => !EXCLUDE.has(p.slug));
 const slugs = new Set();
 for (const p of posts) {
   if (slugs.has(p.slug)) throw new Error(`Duplicate slug across feeds: ${p.slug}`);

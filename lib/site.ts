@@ -2,7 +2,7 @@ export const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export const profile = {
   name: 'Vaishnavi Shivkumar',
-  short: 'Vaish',
+  short: 'Vaishnavi',
   email: 'vaishnavishivkumar0@gmail.com',
   links: [
     {label: 'GitHub', url: 'https://github.com/v4ishnavi'},
@@ -19,18 +19,21 @@ export const publications = [
     authors: 'P. Kodali, V. Shivkumar, S. Joshi, M. Choudhury, P. Kumaraguru, M. Shrivastava',
     venue: 'CODS 2025',
     url: 'https://arxiv.org/abs/2510.19782',
+    image: '/images/code-mixed.jpg',
   },
   {
     title: 'OPIUM: Mitigating Steering Externalities and Over-Refusal via Dual Objective Latent Optimization',
     authors: 'K. Aravindan, A. Rastogi, A. Prasad, K. Aneja, S. Jain, V. Shivkumar, P. Kumaraguru',
     venue: 'ICML 2026 Mech Interp Workshop',
     url: 'https://openreview.net/forum?id=AKgB9rKPNp',
+    image: '/images/opium.jpg',
   },
   {
     title: 'MetaGMT: Improving Actionable Interpretability of Graph Multilinear Networks via Meta-Learning Filtration',
     authors: 'R. Bhattacharya, H. Shankar, V. Shivkumar, P. Kumaraguru',
     venue: 'Preprint 2025',
     url: 'https://arxiv.org/abs/2505.19445',
+    image: '/images/metagmt.jpg',
   },
 ];
 
@@ -43,12 +46,12 @@ export const experience = [
 ];
 
 // Non-research things, shown in "life" mode.
-export const otherThings = [
+export const otherThings: {title: string; note: string; url?: string; image?: string}[] = [
   {title: 'Chief Editor, Student Media Body', note: 'Student journalism at IIIT Hyderabad.'},
   {title: 'Head of Content Writing, College Cultural Fest', note: ''},
   {title: 'TA, Introduction to Film Studies', note: ''},
   {title: 'Apex Council Head, Student Mentorship Body', note: ''},
   {title: 'PR Lead, Student Parliament', note: ''},
   {title: 'Philosophy group', note: 'Discussions about AI and AI safety, among other things.'},
-  {title: 'nature-of-code', note: 'Generative art: Perlin flow fields, Voronoi, brown noise.', url: 'https://github.com/v4ishnavi/nature-of-code'},
+  {title: 'nature-of-code', note: 'Generative art: Perlin flow fields, Voronoi, brown noise.', url: 'https://github.com/v4ishnavi/nature-of-code', image: '/images/nature-of-code.jpg'},
 ];

@@ -1,27 +1,48 @@
+/* Ink black, jean blue and turquoise. */
 :root {
-  --bg: #faf9f6;
-  --text: #1f211c;
-  --muted: #74766d;
-  --line: #e4e2db;
-  --chip: #efede6;
+  --bg: #f4f7fa;
+  --surface: #ffffff;
+  --text: #0b1220;
+  --muted: #55637a;
+  --line: #d9e1ec;
+  --chip: #e6edf6;
   --chip-active: #ffffff;
-  --accent: #a8643c;
+  --accent: #1f4e8c; /* jean blue */
+  --accent-2: #0b8580; /* turquoise, deepened for contrast on light */
+  --tag-bg: #e1eaf7;
   --serif: var(--font-serif), Georgia, 'Times New Roman', serif;
   --sans: var(--font-sans), system-ui, -apple-system, 'Segoe UI', sans-serif;
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #161714;
-    --text: #e9e7e0;
-    --muted: #9a9b93;
-    --line: #2d2e2a;
-    --chip: #23241f;
-    --chip-active: #34352f;
-    --accent: #e09a6e;
+  :root:not([data-theme='light']) {
+    --bg: #07090d;
+    --surface: #0e131b;
+    --text: #e7eef7;
+    --muted: #8a99ae;
+    --line: #1c2533;
+    --chip: #121a26;
+    --chip-active: #1f2f47;
+    --accent: #6f9bd8;
+    --accent-2: #34d1c4;
+    --tag-bg: #142236;
     color-scheme: dark;
   }
+}
+
+:root[data-theme='dark'] {
+  --bg: #07090d;
+  --surface: #0e131b;
+  --text: #e7eef7;
+  --muted: #8a99ae;
+  --line: #1c2533;
+  --chip: #121a26;
+  --chip-active: #1f2f47;
+  --accent: #6f9bd8;
+  --accent-2: #34d1c4;
+  --tag-bg: #142236;
+  color-scheme: dark;
 }
 
 /* Mode: one page, two views. Hidden blocks stay in the HTML for search engines. */
@@ -93,11 +114,12 @@ ol {
 }
 
 .logo span {
-  color: var(--accent);
+  color: var(--accent-2);
 }
 
 nav {
   display: flex;
+  align-items: center;
   gap: 22px;
   font-size: 14px;
   color: var(--muted);
@@ -129,6 +151,10 @@ nav {
 .switch button.active {
   background: var(--chip-active);
   color: var(--text);
+}
+
+.switch button.active span {
+  color: var(--accent-2);
   box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
 }
 
@@ -207,7 +233,7 @@ button.inline {
   background: none;
   padding: 0;
   font: inherit;
-  color: var(--accent);
+  color: var(--accent-2);
   cursor: pointer;
 }
 
@@ -237,6 +263,91 @@ button.inline {
 
 .links a {
   border-bottom: 1px solid var(--line);
+}
+
+.hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.portrait {
+  flex: none;
+  width: 132px;
+  height: 132px;
+  object-fit: cover;
+  object-position: center 30%;
+  border-radius: 50%;
+  border: 3px solid var(--surface);
+  box-shadow: 0 0 0 2px var(--accent-2);
+  margin-bottom: 26px;
+}
+
+.theme {
+  border: 1px solid var(--line);
+  background: var(--chip);
+  color: var(--text);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.theme:hover {
+  border-color: var(--accent-2);
+}
+
+.more {
+  margin-top: 18px;
+}
+
+/* Figures are white-background plots, so they sit on a white tile in both themes. */
+.pub-thumb,
+.card-img,
+.hero-fig img {
+  display: block;
+  background: #ffffff;
+  object-fit: contain;
+  border: 1px solid var(--line);
+}
+
+.row.pub {
+  align-items: center;
+}
+
+.pub-thumb {
+  flex: none;
+  width: 120px;
+  height: 80px;
+  border-radius: 8px;
+}
+
+.card-img {
+  width: 100%;
+  height: 140px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.hero-fig {
+  margin: 32px 0 0;
+}
+
+.hero-fig img {
+  width: 100%;
+  max-height: 420px;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.hero-fig figcaption {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
 }
 
 /* Lists */
@@ -274,7 +385,7 @@ a.row:hover {
 .index {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: 12px;
-  color: var(--muted);
+  color: var(--accent);
   min-width: 20px;
 }
 
@@ -287,7 +398,7 @@ a.row:hover {
 }
 
 a.row:hover .arrow {
-  color: var(--accent);
+  color: var(--accent-2);
 }
 
 .rows + .copy,
@@ -303,6 +414,7 @@ a.row:hover .arrow {
 
 .card {
   display: block;
+  background: var(--surface);
   height: 100%;
   padding: 16px 18px;
   border: 1px solid var(--line);
@@ -311,7 +423,7 @@ a.row:hover .arrow {
 }
 
 a.card:hover {
-  border-color: var(--accent);
+  border-color: var(--accent-2);
   transform: translateY(-2px);
   color: inherit;
 }
@@ -333,8 +445,8 @@ a.card:hover {
 .tag {
   display: inline-block;
   font-size: 11.5px;
-  color: var(--muted);
-  background: var(--chip);
+  color: var(--accent);
+  background: var(--tag-bg);
   padding: 2px 8px;
   border-radius: 999px;
 }
@@ -391,7 +503,7 @@ a.card:hover {
 .prose blockquote {
   margin: 1.5em 0;
   padding-left: 18px;
-  border-left: 2px solid var(--accent);
+  border-left: 2px solid var(--accent-2);
   color: var(--muted);
 }
 
@@ -495,6 +607,23 @@ footer .soft {
 
   .cards {
     grid-template-columns: 1fr;
+  }
+
+  .pub-thumb {
+    width: 84px;
+    height: 60px;
+  }
+
+  .hero-top {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .portrait {
+    width: 96px;
+    height: 96px;
+    margin-bottom: 0;
   }
 
   .head {

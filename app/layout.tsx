@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import {Inter, Newsreader} from 'next/font/google';
 import Link from 'next/link';
 import ModeSwitch from './ModeSwitch';
+import ThemeToggle from './ThemeToggle';
 import {profile} from '../lib/site';
 import './globals.css';
 
@@ -14,7 +15,7 @@ const sans = Inter({subsets: ['latin'], variable: '--font-sans'});
 const serif = Newsreader({subsets: ['latin'], variable: '--font-serif', style: ['normal', 'italic']});
 
 // Runs before paint so a returning "life" visitor never sees the research view flash.
-const modeScript = `try{var m=new URLSearchParams(location.search).get('mode')||localStorage.getItem('mode');if(m==='life'||m==='research')document.documentElement.dataset.mode=m}catch(e){}`;
+const modeScript = `try{var d=document.documentElement,m=new URLSearchParams(location.search).get('mode')||localStorage.getItem('mode'),t=localStorage.getItem('theme');if(m==='life'||m==='research')d.dataset.mode=m;if(t==='light'||t==='dark')d.dataset.theme=t}catch(e){}`;
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
@@ -33,6 +34,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
               <Link href="/#research" data-mode-link="research">research</Link>
               <Link href="/writing/">writing</Link>
               <Link href="/#stuff">stuff</Link>
+              <ThemeToggle />
             </nav>
           </header>
           <ModeSwitch />

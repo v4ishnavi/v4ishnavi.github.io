@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import Link from 'next/link';
 import {notFound} from 'next/navigation';
 import {research} from '../../../lib/research';
+import {basePath} from '../../../lib/site';
 
 export const dynamicParams = false;
 
@@ -30,6 +31,12 @@ export default async function ResearchPage({params}: {params: Promise<{slug: str
       </p>
       <h1>{r.title}</h1>
       <p className="intro">{r.summary}</p>
+      {r.image && (
+        <figure className="hero-fig">
+          <img src={basePath + r.image.src} alt={r.image.caption} />
+          <figcaption>{r.image.caption}</figcaption>
+        </figure>
+      )}
       <div className="prose">
         {r.details.map((d) => (
           <p key={d}>{d}</p>

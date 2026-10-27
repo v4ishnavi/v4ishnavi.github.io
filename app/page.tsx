@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import {experience, otherThings, profile, publications} from '../lib/site';
+import {basePath, experience, otherThings, profile, publications} from '../lib/site';
 import {research, stuff} from '../lib/research';
 import {formatDate, posts, type Post} from '../lib/posts';
 
@@ -30,8 +30,14 @@ export default function Home() {
   return (
     <main>
       <section className="hero" id="about">
-        <p className="name">{profile.name}</p>
-        <h1>Hello, I’m Vaish!</h1>
+        <div className="hero-top">
+          <div>
+            <p className="name">{profile.name}</p>
+            <h1>Hello, I’m {profile.short}!</h1>
+          </div>
+          <img className="portrait only-research" src={`${basePath}/vaishnavi-research.jpg`} alt={profile.name} width={600} height={600} />
+          <img className="portrait only-life" src={`${basePath}/vaishnavi-life.jpg`} alt={profile.name} width={600} height={800} />
+        </div>
 
         <div className="only-research">
           <p className="intro">
@@ -91,7 +97,8 @@ export default function Home() {
         <ul className="rows">
           {publications.map((p) => (
             <li key={p.title}>
-              <a className="row" href={p.url} target="_blank" rel="noreferrer">
+              <a className="row pub" href={p.url} target="_blank" rel="noreferrer">
+                <img className="pub-thumb" src={basePath + p.image} alt="" loading="lazy" />
                 <div>
                   <strong>{p.title}</strong>
                   <small>
@@ -120,6 +127,12 @@ export default function Home() {
         </div>
         <div className="only-life">
           <PostList items={personal} />
+          <p className="copy">
+            For more, head to my{' '}
+            <a href="https://tacksforsnaccs.substack.com" target="_blank" rel="noreferrer">
+              Substack ↗
+            </a>
+          </p>
         </div>
       </section>
 
@@ -146,9 +159,11 @@ export default function Home() {
         <div className="only-research">
           <p className="copy">Course projects, internship work and small experiments, mostly on GitHub.</p>
           <ul className="cards">
-            {stuff.map((s) => {
+            {/* Cards with a figure first, so rows pair up evenly. */}
+            {[...stuff.filter((s) => s.image), ...stuff.filter((s) => !s.image)].map((s) => {
               const body = (
                 <>
+                  {s.image && <img className="card-img" src={basePath + s.image} alt="" loading="lazy" />}
                   <span className="tag">{s.tag}</span>
                   <strong>{s.title}</strong>
                   <small>{s.note}</small>
@@ -174,7 +189,8 @@ export default function Home() {
             {otherThings.map((o) => (
               <li key={o.title}>
                 {o.url ? (
-                  <a className="row" href={o.url} target="_blank" rel="noreferrer">
+                  <a className="row pub" href={o.url} target="_blank" rel="noreferrer">
+                    {o.image && <img className="pub-thumb" src={basePath + o.image} alt="" loading="lazy" />}
                     <div>
                       <strong>{o.title}</strong>
                       {o.note && <small>{o.note}</small>}

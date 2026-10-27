@@ -8,6 +8,7 @@ export type ResearchItem = {
   summary: string;
   details: string[];
   links?: Link[];
+  image?: {src: string; caption: string};
 };
 
 // Ordered as they appear on the homepage.
@@ -49,6 +50,7 @@ export const research: ResearchItem[] = [
   },
   {
     slug: 'code-mixed-model-merging',
+    image: {src: '/images/code-mixed.jpg', caption: 'First page of the CODS 2025 paper.'},
     title: 'Code-Mixed Model Merging',
     tags: 'NLP · Model merging · CODS 2025',
     status: 'published',
@@ -61,6 +63,7 @@ export const research: ResearchItem[] = [
   },
   {
     slug: 'opium',
+    image: {src: '/images/opium.jpg', caption: 'Figure 1 from the OPIUM paper.'},
     title: 'OPIUM',
     tags: 'Steering · Over-refusal · ICML 2026 MI Workshop',
     status: 'workshop paper',
@@ -72,6 +75,7 @@ export const research: ResearchItem[] = [
   },
   {
     slug: 'metagmt',
+    image: {src: '/images/metagmt.jpg', caption: 'The MetaGMT pipeline (Figure 1 of the preprint).'},
     title: 'MetaGMT',
     tags: 'Graph ML · Explainability · Meta-learning',
     status: 'preprint',
@@ -87,6 +91,7 @@ export const research: ResearchItem[] = [
   },
   {
     slug: 'network-inference',
+    image: {src: '/images/network-inference.jpg', caption: 'Error under partial observability as samples and processes scale.'},
     title: 'Inferring Hidden Networks',
     tags: 'Signal processing · Dynamical systems',
     status: 'research project',
@@ -100,20 +105,19 @@ export const research: ResearchItem[] = [
   },
 ];
 
-export type Thing = {title: string; note: string; tag: string; url?: string};
+export type Thing = {title: string; note: string; tag: string; url?: string; image?: string};
 
 // Smaller projects, mostly course work and side quests.
 export const stuff: Thing[] = [
-  {title: 'Critical Evaluation of TinyStories', note: 'Auditing evaluation pipelines for duplication, vocabulary leakage and scoring artifacts.', tag: 'Advanced NLP', url: 'https://github.com/v4ishnavi/nvm-tinyStories'},
-  {title: 'Multi-Agent RL for E-Commerce Fulfillment', note: 'Graph autoencoders + DQNs, integrated with VRP solvers.', tag: 'Optimization for ML', url: 'https://github.com/v4ishnavi/MultiAgentLearningforRouting'},
+  {title: 'Critical Evaluation of TinyStories', note: 'Auditing evaluation pipelines for duplication, vocabulary leakage and scoring artifacts.', tag: 'Advanced NLP', url: 'https://github.com/v4ishnavi/nvm-tinyStories', image: '/images/tinystories.jpg'},
+  {title: 'Multi-Agent RL for E-Commerce Fulfillment', note: 'Graph autoencoders + DQNs, integrated with VRP solvers.', tag: 'Optimization for ML', url: 'https://github.com/v4ishnavi/MultiAgentLearningforRouting', image: '/images/marl.jpg'},
   {title: 'TeraAcc', note: 'Roadmap for a RISC-V accelerator for 1.58-bit BitNet LLMs on a ternary systolic array.', tag: 'Hardware for AI'},
   {title: 'Y86-64 Processor', note: 'Sequential and pipelined Y86-64 in modular Verilog.', tag: 'Processor Architecture', url: 'https://github.com/v4ishnavi/ipa-y86-verilog'},
-  {title: 'findcoolpapers', note: 'A scraper because finding cool papers should be easier.', tag: 'Tool', url: 'https://github.com/v4ishnavi/findcoolpapers'},
-  {title: 'Source Localization', note: '2D/3D emitter localization from sensor arrays, chirp analysis.', tag: 'Detection & Estimation', url: 'https://github.com/v4ishnavi/sdet-source-estimation-project'},
+  {title: 'Source Localization', note: '2D/3D emitter localization from sensor arrays, chirp analysis.', tag: 'Detection & Estimation', url: 'https://github.com/v4ishnavi/sdet-source-estimation-project', image: '/images/source-localization.jpg'},
   {title: 'Visualising Berman Codes', note: 'Manim animations explaining a generalization of Reed–Muller codes.', tag: 'Information & Comm.', url: 'https://github.com/v4ishnavi/IC-project-visualising-berman-codes'},
-  {title: 'Echo Cancellation & Noise Classification', note: 'Classic signal processing on real audio.', tag: 'Signals & Systems', url: 'https://github.com/v4ishnavi/SP-project-2-1-iiith'},
+  {title: 'Echo Cancellation & Noise Classification', note: 'Classic signal processing on real audio.', tag: 'Signals & Systems', url: 'https://github.com/v4ishnavi/SP-project-2-1-iiith', image: '/images/echo-cancellation.jpg'},
   {title: 'Non-Intrusive Load Monitoring', note: 'Energy disaggregation with FFT and wavelets.', tag: 'Celebal internship', url: 'https://github.com/v4ishnavi/celebal-tech-NILM'},
   {title: 'Early Sensor Fault Prediction', note: 'Tree-based regressors predicting time to machine failure.', tag: 'Celebal internship', url: 'https://github.com/v4ishnavi/celebal-tech-early-fault-prediction'},
-  {title: 'Paddy Disease Detection', note: 'Healthy vs. unhealthy paddy crops from leaf images.', tag: 'Megathon 2023', url: 'https://github.com/v4ishnavi/megathon-2023-cloned'},
-  {title: '4-bit ALU', note: 'Built three times: Verilog, ngspice and Magic layout.', tag: 'VLSI Design', url: 'https://github.com/v4ishnavi/vlsi-d-alu'},
+  {title: 'Paddy Disease Detection', note: 'Healthy vs. unhealthy paddy crops from leaf images.', tag: 'Megathon 2023', url: 'https://github.com/v4ishnavi/megathon-2023-cloned', image: '/images/paddy.jpg'},
+  {title: '4-bit ALU', note: 'Built three times: Verilog, ngspice and Magic layout.', tag: 'VLSI Design', url: 'https://github.com/v4ishnavi/vlsi-d-alu', image: '/images/alu.jpg'},
 ];
