@@ -7,6 +7,7 @@ export type ResearchItem = {
   status: string;
   summary: string;
   details: string[];
+  points?: string[];
   links?: Link[];
   image?: {src: string; caption: string};
   current?: boolean;
@@ -16,6 +17,16 @@ export type ResearchItem = {
 
 // Ordered as they appear on the homepage.
 export const research: ResearchItem[] = [
+  {
+    slug: 'my-job',
+    current: true,
+    title: 'My Job',
+    tags: 'Data Scientist · Mastercard AI Garage',
+    status: 'ongoing',
+    summary: 'What my days at Mastercard AI Garage look like.',
+    details: [],
+    points: ['Data Cleaning', 'Product Deploying', 'Corporate Research'],
+  },
   {
     slug: 'time-in-video-models',
     current: true,

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import {basePath, contributions, experience, job, otherThings, profile, publications} from '../lib/site';
+import {basePath, contributions, experience, otherThings, profile, publications} from '../lib/site';
 import {research, stuff, type ResearchItem} from '../lib/research';
 import {writing, type ListedPost} from '../lib/posts';
 import PingList from './PingList';
@@ -90,14 +90,6 @@ export default function Home() {
       <section id="research" className="only-research">
         <h2>What I’m working on</h2>
         <ResearchList items={research.filter((r) => r.current)} />
-        <h3 className="sub">My job</h3>
-        <ul className="rows">
-          {job.map((j) => (
-            <li key={j} className="row static">
-              <strong>{j}</strong>
-            </li>
-          ))}
-        </ul>
       </section>
 
       <section className="only-research">

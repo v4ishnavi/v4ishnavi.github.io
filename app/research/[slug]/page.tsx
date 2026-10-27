@@ -41,6 +41,13 @@ export default async function ResearchPage({params}: {params: Promise<{slug: str
         {r.details.map((d) => (
           <p key={d}>{d}</p>
         ))}
+        {r.points && (
+          <ul>
+            {r.points.map((p) => (
+              <li key={p}>{p}</li>
+            ))}
+          </ul>
+        )}
       </div>
       {r.links && (
         <div className="links">
