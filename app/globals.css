@@ -284,6 +284,19 @@ button.inline {
   margin-bottom: 26px;
 }
 
+.portrait-link {
+  flex: none;
+  line-height: 0;
+}
+
+.portrait-link .portrait {
+  transition: transform 0.2s ease;
+}
+
+.portrait-link:hover .portrait {
+  transform: rotate(-4deg) scale(1.03);
+}
+
 .theme {
   border: 1px solid var(--line);
   background: var(--chip);

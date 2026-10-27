@@ -69,8 +69,10 @@ export default function Home() {
             <p className="name">{profile.name}</p>
             <h1>Hello, I’m {profile.short}!</h1>
           </div>
-          <img className="portrait only-research" src={`${basePath}/vaishnavi-research.jpg`} alt={profile.name} width={600} height={600} />
-          <img className="portrait only-life" src={`${basePath}/vaishnavi-life.jpg`} alt={profile.name} width={600} height={800} />
+          <Link className="portrait-link" href="/play/" title="wanna play a game?">
+            <img className="portrait only-research" src={`${basePath}/vaishnavi-research.jpg`} alt={profile.name} width={600} height={600} />
+            <img className="portrait only-life" src={`${basePath}/vaishnavi-life.jpg`} alt={profile.name} width={600} height={800} />
+          </Link>
         </div>
 
         <div className="only-research">
