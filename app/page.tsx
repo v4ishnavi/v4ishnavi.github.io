@@ -51,11 +51,11 @@ export default function Home() {
         </div>
         <div className="only-life">
           <p className="intro">
-            I write things down before they disappear: letters, checkpoints, songs on repeat, evenings in Gurgaon.
+            I write things down before they disappear.
           </p>
           <p className="copy">
             Most of it lives on <a href="https://tacksforsnaccs.substack.com">tacksforsnaccs</a>. Outside of that: student
-            journalism, film, philosophy, generative art, and long conversations.
+            journalism and generative art.
           </p>
         </div>
 

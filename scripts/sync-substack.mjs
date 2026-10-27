@@ -13,7 +13,16 @@ const MODE_OVERRIDES = {
 };
 
 // Posts that stay on Substack only.
-const EXCLUDE = new Set(['october-9th-2026-0030', '256', 'ordinary-day', 'the-woes-in-between']);
+const EXCLUDE = new Set([
+  'october-9th-2026-0030',
+  '256',
+  'ordinary-day',
+  'the-woes-in-between',
+  'checkpoint-oct-2026',
+  'evenings-in-gurgaon',
+  'i-will-probably-write-about-you',
+  'if-nobody-is-watching-what-is-a-good',
+]);
 
 const cdata = (s) => s?.replace(/^<!\[CDATA\[([\s\S]*)\]\]>$/, '$1').trim() ?? '';
 const tag = (item, name) => cdata(item.match(new RegExp(`<${name}[^>]*>([\\s\\S]*?)</${name}>`))?.[1]);

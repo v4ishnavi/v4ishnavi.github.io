@@ -7,7 +7,7 @@ export const metadata: Metadata = {title: 'Writing'};
 
 const groups = [
   {mode: 'research', title: 'On research', note: 'Longer, more technical essays.'},
-  {mode: 'life', title: 'On life', note: 'Letters, checkpoints, and the occasional song.'},
+  {mode: 'life', title: 'On life', note: 'Letters and the occasional song.'},
 ] as const;
 
 export default function WritingIndex() {
