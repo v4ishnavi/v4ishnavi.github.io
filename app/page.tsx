@@ -63,7 +63,7 @@ export default function Home() {
         </div>
         <div className="only-life">
           <p className="intro">
-            I write things down before they disappear.
+            Writing, tinkering &amp; dilly dallying.
           </p>
           <p className="copy">
             Most of it lives on <a href="https://tacksforsnaccs.substack.com">tacksforsnaccs</a>. Outside of that: student
@@ -214,7 +214,6 @@ export default function Home() {
           </ul>
         </div>
         <div className="only-life">
-          <p className="copy">Writing, tinkering &amp; dilly dallying.</p>
           <ul className="rows">
             {otherThings.map((o) => (
               <li key={o.title}>
