@@ -177,6 +177,11 @@ section {
   letter-spacing: 0.02em;
 }
 
+.ipa {
+  letter-spacing: 0;
+  opacity: 0.75;
+}
+
 h1,
 h2 {
   font-family: var(--serif);

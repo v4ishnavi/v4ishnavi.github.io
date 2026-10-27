@@ -67,7 +67,9 @@ export default function Home() {
       <section className="hero" id="about">
         <div className="hero-top">
           <div>
-            <p className="name">{profile.name}</p>
+            <p className="name">
+              {profile.name} <span className="ipa" title="why-shna-vee">(/ˈvaɪʃ.nə.vi/)</span>
+            </p>
             <h1>Hello, I’m {profile.short}!</h1>
           </div>
           <Link className="portrait-link" href="/play/" title="wanna play a game?">
