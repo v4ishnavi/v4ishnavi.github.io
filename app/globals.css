@@ -400,6 +400,29 @@ button.inline {
   margin-bottom: 4px;
 }
 
+.play-link {
+  margin-top: 48px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.dino canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+.dino-score {
+  display: flex;
+  justify-content: space-between;
+  margin: 18px 0 8px;
+  font-variant-numeric: tabular-nums;
+}
+
 .designs-label {
   margin: 28px 0 10px;
 }

@@ -211,6 +211,9 @@ export default function Home() {
           <OtherThings />
         </div>
       </section>
+      <p className="only-life play-link">
+        <Link href="/play/">play a game?</Link>
+      </p>
     </main>
   );
 }
