@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import {basePath, experience, otherThings, profile, publications} from '../lib/site';
-import {research, stuff} from '../lib/research';
+import {research, stuff, type ResearchItem} from '../lib/research';
 import {formatDate, posts, type Post} from '../lib/posts';
 import PingList from './PingList';
 
@@ -21,6 +21,25 @@ function PostList({items}: {items: Post[]}) {
         </li>
       ))}
     </ul>
+  );
+}
+
+function ResearchList({items}: {items: ResearchItem[]}) {
+  return (
+    <ol className="rows">
+      {items.map((r, i) => (
+        <li key={r.slug}>
+          <Link className="row" href={`/research/${r.slug}/`}>
+            <span className="index">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <strong>{r.title}</strong>
+              <small>{r.tags}</small>
+            </div>
+            <span className="arrow">↗</span>
+          </Link>
+        </li>
+      ))}
+    </ol>
   );
 }
 
@@ -76,21 +95,13 @@ export default function Home() {
       </section>
 
       <section id="research" className="only-research">
-        <h2>Research &amp; things I’m working on</h2>
-        <ol className="rows">
-          {research.map((r, i) => (
-            <li key={r.slug}>
-              <Link className="row" href={`/research/${r.slug}/`}>
-                <span className="index">{String(i + 1).padStart(2, '0')}</span>
-                <div>
-                  <strong>{r.title}</strong>
-                  <small>{r.tags}</small>
-                </div>
-                <span className="arrow">↗</span>
-              </Link>
-            </li>
-          ))}
-        </ol>
+        <h2>What I’m working on</h2>
+        <ResearchList items={research.filter((r) => r.current)} />
+      </section>
+
+      <section className="only-research">
+        <h2>Past research</h2>
+        <ResearchList items={research.filter((r) => !r.current)} />
       </section>
 
       <section className="only-research">

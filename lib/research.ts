@@ -9,12 +9,14 @@ export type ResearchItem = {
   details: string[];
   links?: Link[];
   image?: {src: string; caption: string};
+  current?: boolean;
 };
 
 // Ordered as they appear on the homepage.
 export const research: ResearchItem[] = [
   {
     slug: 'time-in-video-models',
+    current: true,
     title: 'Understanding Time in Video Models',
     tags: 'Temporal reasoning · Interpretability',
     status: 'ongoing',
@@ -40,11 +42,11 @@ export const research: ResearchItem[] = [
     slug: 'federated-fairness',
     title: 'Federated Learning & Fairness',
     tags: 'Heterogeneous systems · Resource constraints',
-    status: 'ongoing',
+    status: 'past research',
     summary: 'Who benefits from federated learning when clients have very different resources?',
     details: [
-      'Studying client-level fairness and allocative harms under heterogeneous resource constraints.',
-      'A parallel thread works on efficient learning for resource-weak settings, including binarized factor models.',
+      'Studied client-level fairness and allocative harms under heterogeneous resource constraints.',
+      'A parallel thread looked at efficient learning for resource-weak settings, including binarized factor models.',
       'In collaboration with Saurav Prakash and Sheetal Kalyani (IIT Madras), Lav Varshney (UIUC) and Praneeth Vepakomma (MBZUAI).',
     ],
   },
