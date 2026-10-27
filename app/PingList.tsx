@@ -20,12 +20,12 @@ export default function PingList() {
       </ul>
       {series.map((a) => (
         <div key={a.url}>
-          <p className="soft designs-label">Designs from {a.title}</p>
+          <p className="soft designs-label">Articles within the {a.title.replace(/^The /, '')} series</p>
           <ul className="designs">
             {a.designs!.map((d) => (
               <li key={d.url}>
                 <a href={d.url} target="_blank" rel="noreferrer">
-                  <img src={d.image} alt={`Design for ${d.title}`} loading="lazy" />
+                  <img src={d.image} alt={`Cover for ${d.title}`} loading="lazy" />
                   <span>{d.title}</span>
                 </a>
               </li>

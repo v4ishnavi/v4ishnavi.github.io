@@ -87,7 +87,7 @@ export default function Home() {
 
         <div className="links">
           {profile.links.map((l) => (
-            <a key={l.label} href={l.url} target={l.url.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
+            <a key={l.label} className={l.mode ? `only-${l.mode}` : undefined} href={l.url} target={l.url.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
               {l.label} ↗
             </a>
           ))}

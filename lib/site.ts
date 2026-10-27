@@ -10,7 +10,11 @@ export const profile = {
     {label: 'LinkedIn', url: 'https://www.linkedin.com/in/vaishnavi-shivkumar-546036258/'},
     {label: 'Email', url: 'mailto:vaishnavishivkumar0@gmail.com'},
     {label: 'CV', url: `${basePath}/resume.pdf`},
-  ],
+    {label: 'Pinterest', url: 'https://in.pinterest.com/vaisham1234/', mode: 'life'},
+    {label: 'Letterboxd', url: 'https://boxd.it/ngMcf', mode: 'life'},
+    {label: 'Goodreads', url: 'https://www.goodreads.com/vaishnavishivkumar', mode: 'life'},
+    {label: 'Spotify', url: 'https://open.spotify.com/user/87i3xa5szokivi7efj548l81v', mode: 'life'},
+  ] as {label: string; url: string; mode?: 'life'}[],
 };
 
 export const publications = [
