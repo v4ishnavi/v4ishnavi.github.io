@@ -39,14 +39,12 @@ export const research: ResearchItem[] = [
     details: ['With Prof. Makarand Tapaswi and Prof. Ponnurangam Kumaraguru (PK).'],
   },
   {
-    slug: 'radbench',
-    title: 'RADBench',
-    tags: 'Counterfactual reasoning · Autonomous driving',
-    status: 'submitted to ICRA 2027',
-    summary: 'A counterfactual grounding benchmark for pedestrian settings in autonomous driving.',
-    details: [
-      'RADBench tests whether models can ground counterfactual situations involving pedestrians in driving scenes: what changes, what should matter, and what should not.',
-    ],
+    slug: 'autonomous-driving',
+    title: 'Autonomous Driving',
+    tags: 'ICRA 2027 (under review)',
+    status: 'past research',
+    summary: 'More on this once the review is out.',
+    details: [],
   },
   {
     slug: 'federated-fairness',
