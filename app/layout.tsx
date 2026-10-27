@@ -1,0 +1,3 @@
+import type {Metadata} from 'next';import './globals.css';
+export const metadata:Metadata={title:{default:'Vaishnavi Shivkumar — vaish.',template:'%s | vaish.'},description:'Research, writing and projects by Vaishnavi Shivkumar.'};
+export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body><div className="shell"><header className="header"><a className="logo" href="/">vaish<span>.</span></a><nav aria-label="Main navigation"><a href="/#about">about</a><a href="/#research">research</a><a href="/#writing">writing</a><a href="/#elsewhere">elsewhere</a></nav></header>{children}<footer>© {new Date().getFullYear()} Vaishnavi Shivkumar <span>made with curiosity ☼</span></footer></div></body></html>}

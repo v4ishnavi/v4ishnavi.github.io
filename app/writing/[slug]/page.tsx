@@ -1,0 +1,4 @@
+import {notFound} from 'next/navigation';import Link from 'next/link';import {posts} from '../../../lib/writing';
+export function generateStaticParams(){return posts.map(p=>({slug:p.slug}))}
+export const dynamicParams=false;
+export default async function WritingPage({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const p=posts.find(x=>x.slug===slug);if(!p)notFound();return <main className="detail"><Link className="back" href="/#writing">← writing</Link><p className="label">{p.date} · {p.source}</p><h1>{p.title}</h1><p className="intro">{p.description}</p>{p.html?<article className="prose" dangerouslySetInnerHTML={{__html:p.html}}/>:<p className="prose">This essay is published on Substack. <a href={p.url}>Read the original ↗</a></p>}<a className="back" href={p.url} target="_blank" rel="noreferrer">original publication ↗</a></main>}
