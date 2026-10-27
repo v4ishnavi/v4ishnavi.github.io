@@ -1,7 +1,8 @@
 import type {Metadata} from 'next';
 import Link from 'next/link';
-import {formatDate, posts} from '../../lib/posts';
+import {writing} from '../../lib/posts';
 import PingList from '../PingList';
+import PostRow from '../PostRow';
 
 export const metadata: Metadata = {title: 'Writing'};
 
@@ -35,19 +36,11 @@ export default function WritingIndex() {
             <span className="soft">{g.note}</span>
           </div>
           <ul className="rows">
-            {posts
+            {writing
               .filter((p) => p.mode === g.mode)
               .map((p) => (
                 <li key={p.slug}>
-                  <Link className="row" href={`/writing/${p.slug}/`}>
-                    <div>
-                      <strong>{p.title}</strong>
-                      <small>
-                        {formatDate(p.date)} · {p.readingMinutes} min read{p.subtitle && ` · ${p.subtitle}`}
-                      </small>
-                    </div>
-                    <span className="arrow">↗</span>
-                  </Link>
+                  <PostRow p={p} detail={'external' in p ? p.publication : `${p.readingMinutes} min read${p.subtitle && ` · ${p.subtitle}`}`} />
                 </li>
               ))}
           </ul>

@@ -1,23 +1,16 @@
 import Link from 'next/link';
 import {basePath, experience, otherThings, profile, publications} from '../lib/site';
 import {research, stuff, type ResearchItem} from '../lib/research';
-import {formatDate, posts, type Post} from '../lib/posts';
+import {writing, type ListedPost} from '../lib/posts';
 import PingList from './PingList';
+import PostRow from './PostRow';
 
-function PostList({items}: {items: Post[]}) {
+function PostList({items}: {items: ListedPost[]}) {
   return (
     <ul className="rows">
       {items.map((p) => (
         <li key={p.slug}>
-          <Link className="row" href={`/writing/${p.slug}/`}>
-            <div>
-              <strong>{p.title}</strong>
-              <small>
-                {formatDate(p.date)} · {p.readingMinutes} min read · {p.publication}
-              </small>
-            </div>
-            <span className="arrow">↗</span>
-          </Link>
+          <PostRow p={p} detail={'external' in p ? p.publication : `${p.readingMinutes} min read · ${p.publication}`} />
         </li>
       ))}
     </ul>
@@ -44,8 +37,8 @@ function ResearchList({items}: {items: ResearchItem[]}) {
 }
 
 export default function Home() {
-  const professional = posts.filter((p) => p.mode === 'research');
-  const personal = posts.filter((p) => p.mode === 'life');
+  const professional = writing.filter((p) => p.mode === 'research');
+  const personal = writing.filter((p) => p.mode === 'life');
 
   return (
     <main>
