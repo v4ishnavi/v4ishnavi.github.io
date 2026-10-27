@@ -49,6 +49,9 @@ export const experience = [
   {org: 'Celebal Technologies', role: 'ML Intern', when: '2023', note: 'NILM and early sensor-fault detection.'},
 ];
 
+// What the day job at Mastercard involves, listed under "What I'm working on".
+export const job = ['Data Cleaning', 'Product Deploying', 'Corporate Research'];
+
 // Teaching and club work, shown in "professional" mode.
 export const contributions = [
   {role: 'Teaching Assistant', org: 'Responsible and Safe AI Systems', when: '2026', note: 'Mentored student projects aimed at WACV and ICLR.'},
