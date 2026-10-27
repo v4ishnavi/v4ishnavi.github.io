@@ -34,6 +34,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
               <Link href="/#research" data-mode-link="research">research</Link>
               <Link href="/writing/">writing</Link>
               <Link href="/stuff/">stuff</Link>
+              <Link className="only-life" href="/play/">play</Link>
               <ThemeToggle />
             </nav>
           </header>

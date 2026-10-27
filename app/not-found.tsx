@@ -7,6 +7,9 @@ export default function NotFound() {
       <p className="copy">
         This page doesn’t exist. <Link href="/">Head home →</Link>
       </p>
+      <p className="copy">
+        Or, while you’re here: <Link href="/play/">play a game?</Link>
+      </p>
     </main>
   );
 }
