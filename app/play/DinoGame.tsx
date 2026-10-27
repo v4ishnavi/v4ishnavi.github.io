@@ -6,11 +6,10 @@ const H = 180;
 const GROUND = H - 24;
 const GRAVITY = 0.7;
 const JUMP = -11.5;
-const START_SPEED = 2.5;
 
 type Obstacle = {x: number; w: number; h: number};
 
-// A small take on the offline dinosaur game: jump over the cacti, it gets 1.5x faster at 5, 25, 125… points.
+// A small take on the offline dinosaur game: jump over the cacti, it speeds up as you go.
 export default function DinoGame() {
   const canvas = useRef<HTMLCanvasElement>(null);
   const [score, setScore] = useState(0);
@@ -30,8 +29,7 @@ export default function DinoGame() {
 
     let y = GROUND;
     let vy = 0;
-    let speed = START_SPEED;
-    let nextLevel = 5;
+    let speed = 5;
     let frame = 0;
     let points = 0;
     let nextGap = 60;
@@ -42,8 +40,7 @@ export default function DinoGame() {
     const reset = () => {
       y = GROUND;
       vy = 0;
-      speed = START_SPEED;
-      nextLevel = 5;
+      speed = 5;
       frame = 0;
       points = 0;
       nextGap = 60;
@@ -81,6 +78,7 @@ export default function DinoGame() {
       y = Math.min(GROUND, y + vy);
       if (y === GROUND) vy = 0;
 
+      speed += 0.002;
       for (const o of obstacles) o.x -= speed;
       obstacles = obstacles.filter((o) => o.x + o.w > -10);
       if (--nextGap <= 0) {
@@ -90,13 +88,7 @@ export default function DinoGame() {
       }
 
       const hit = obstacles.some((o) => o.x < 40 + 26 && o.x + o.w > 40 + 2 && y > GROUND - o.h + 4);
-      if (frame % 6 === 0) {
-        setScore(++points);
-        if (points >= nextLevel) {
-          speed *= 1.5;
-          nextLevel *= 5;
-        }
-      }
+      if (frame % 6 === 0) setScore(++points);
       draw();
       if (hit) {
         running = false;
