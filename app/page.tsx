@@ -83,8 +83,9 @@ export default function Home() {
             I think about how machines learn to understand the world, and occasionally write about understanding my own.
           </p>
           <p className="copy">
-            Currently exploring temporal reasoning, interpretability, and video models. Before that: code-mixed NLP, federated
-            learning fairness, graph explainability and network inference.
+            Currently exploring temporal reasoning, interpretability, and video models. I was previously advised by Prof.{' '}
+            <Linked text="Ponnurangam Kumaraguru" /> (PK), and have worked on code-mixed NLP, federated learning fairness, graph
+            explainability and network inference.
           </p>
         </div>
         <div className="only-life">

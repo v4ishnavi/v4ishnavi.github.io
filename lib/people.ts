@@ -1,7 +1,7 @@
 // Collaborators' pages. Any of these names in research details or publication authors becomes a link.
 const pages: Record<string, string> = {
   'Makarand Tapaswi': 'https://makarandtapaswi.github.io/',
-  'Ponnurangam Kumaraguru': 'https://www.iiit.ac.in/faculty/ponnurangam-kumaraguru/',
+  'Ponnurangam Kumaraguru': 'https://scholar.google.com/citations?user=MfzQyP8AAAAJ&hl=en',
   'Saurav Prakash': 'https://scholar.google.com/citations?user=VhnTrugAAAAJ&hl=en',
   'Sheetal Kalyani': 'https://scholar.google.com/citations?user=NFyY2QIAAAAJ&hl=en',
   'Monojit Choudhury': 'https://mbzuai.ac.ae/academics/faculty-directory/monojit-choudhury',
