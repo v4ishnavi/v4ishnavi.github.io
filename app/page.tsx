@@ -3,6 +3,7 @@ import {basePath, contributions, experience, profile, publications, teaching} fr
 import {research, type ResearchItem} from '../lib/research';
 import {writing, type ListedPost} from '../lib/posts';
 import PingList from './PingList';
+import Linked from './Linked';
 import PostRow from './PostRow';
 import {OtherThings, StuffCards} from './Stuff';
 
@@ -119,16 +120,20 @@ export default function Home() {
         <ul className="rows">
           {publications.map((p) => (
             <li key={p.title}>
-              <a className="row pub" href={p.url} target="_blank" rel="noreferrer">
-                <img className="pub-thumb" src={basePath + p.image} alt="" loading="lazy" />
+              {/* Not one big link, so the authors can link to their own pages. */}
+              <div className="row pub">
+                <a href={p.url} target="_blank" rel="noreferrer">
+                  <img className="pub-thumb" src={basePath + p.image} alt="" loading="lazy" />
+                </a>
                 <div>
-                  <strong>{p.title}</strong>
+                  <a className="pub-title" href={p.url} target="_blank" rel="noreferrer">
+                    <strong>{p.title} ↗</strong>
+                  </a>
                   <small>
-                    {p.authors} · <em>{p.venue}</em>
+                    <Linked text={p.authors} /> · <em>{p.venue}</em>
                   </small>
                 </div>
-                <span className="arrow">↗</span>
-              </a>
+              </div>
             </li>
           ))}
         </ul>

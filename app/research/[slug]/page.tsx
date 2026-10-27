@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import Link from 'next/link';
 import {notFound} from 'next/navigation';
 import {research} from '../../../lib/research';
+import Linked from '../../Linked';
 import {basePath} from '../../../lib/site';
 
 export const dynamicParams = false;
@@ -39,7 +40,9 @@ export default async function ResearchPage({params}: {params: Promise<{slug: str
       )}
       <div className="prose">
         {r.details.map((d) => (
-          <p key={d}>{d}</p>
+          <p key={d}>
+            <Linked text={d} />
+          </p>
         ))}
         {r.points && (
           <ul>

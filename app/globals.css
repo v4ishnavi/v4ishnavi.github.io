@@ -500,6 +500,17 @@ a.row:hover {
   margin-top: 2px;
 }
 
+.row small a {
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+}
+
+.row.pub > a {
+  flex: none;
+  line-height: 0;
+}
+
 .index {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: 12px;
