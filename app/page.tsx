@@ -1,9 +1,10 @@
 import Link from 'next/link';
-import {basePath, contributions, experience, otherThings, profile, publications} from '../lib/site';
-import {research, stuff, type ResearchItem} from '../lib/research';
+import {basePath, contributions, experience, profile, publications} from '../lib/site';
+import {research, type ResearchItem} from '../lib/research';
 import {writing, type ListedPost} from '../lib/posts';
 import PingList from './PingList';
 import PostRow from './PostRow';
+import {OtherThings, StuffCards} from './Stuff';
 
 function PostList({items}: {items: ListedPost[]}) {
   return (
@@ -38,7 +39,9 @@ function ResearchList({items}: {items: ResearchItem[]}) {
 
 export default function Home() {
   const professional = writing.filter((p) => p.mode === 'research');
-  const personal = writing.filter((p) => p.mode === 'life');
+  // The full list is on /writing/; these two stay off the homepage.
+  const hiddenOnHome = ['repertoire', 'wanna-come-to-my-house-to-play'];
+  const personal = writing.filter((p) => p.mode === 'life' && !hiddenOnHome.includes(p.slug));
 
   return (
     <main>
@@ -63,10 +66,10 @@ export default function Home() {
         </div>
         <div className="only-life">
           <p className="intro">
-            Writing, tinkering &amp; dilly dallying.
+            Writing, reading, tinkering, dilly dallying.
           </p>
           <p className="copy">
-            Most of it lives on <a href="https://tacksforsnaccs.substack.com">tacksforsnaccs</a>. Outside of that: student
+            Most of it lives on tacksforsnaccs. Outside of that: student
             journalism and generative art.
           </p>
         </div>
@@ -80,7 +83,7 @@ export default function Home() {
 
         <div className="links">
           {profile.links.map((l) => (
-            <a key={l.label} className={l.mode ? `only-${l.mode}` : undefined} href={l.url} target={l.url.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
+            <a key={l.url} className={l.mode ? `only-${l.mode}` : undefined} href={l.url} target={l.url.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
               {l.label} ↗
             </a>
           ))}
@@ -184,59 +187,19 @@ export default function Home() {
       </section>
 
       <section id="stuff">
-        <h2 className="only-research">Stuff I’ve made</h2>
-        <h2 className="only-life">Other things</h2>
+        <div className="head">
+          <h2 className="only-research">Stuff I’ve made</h2>
+          <h2 className="only-life">Other things</h2>
+          <Link className="soft" href="/stuff/">
+            all stuff →
+          </Link>
+        </div>
         <div className="only-research">
           <p className="copy">Course projects, internship work and small experiments, mostly on GitHub.</p>
-          <ul className="cards">
-            {/* Cards with a figure first, so rows pair up evenly. */}
-            {[...stuff.filter((s) => s.image), ...stuff.filter((s) => !s.image)].map((s) => {
-              const body = (
-                <>
-                  {s.image && <img className="card-img" src={basePath + s.image} alt="" loading="lazy" />}
-                  <span className="tag">{s.tag}</span>
-                  <strong>{s.title}</strong>
-                  <small>{s.note}</small>
-                </>
-              );
-              return (
-                <li key={s.title}>
-                  {s.url ? (
-                    <a className="card" href={s.url} target="_blank" rel="noreferrer">
-                      {body}
-                    </a>
-                  ) : (
-                    <div className="card">{body}</div>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
+          <StuffCards />
         </div>
         <div className="only-life">
-          <ul className="rows">
-            {otherThings.map((o) => (
-              <li key={o.title}>
-                {o.url ? (
-                  <a className="row pub" href={o.url} target="_blank" rel="noreferrer">
-                    {o.image && <img className="pub-thumb" src={basePath + o.image} alt="" loading="lazy" />}
-                    <div>
-                      <strong>{o.title}</strong>
-                      {o.note && <small>{o.note}</small>}
-                    </div>
-                    <span className="arrow">↗</span>
-                  </a>
-                ) : (
-                  <div className="row static">
-                    <div>
-                      <strong>{o.title}</strong>
-                      {o.note && <small>{o.note}</small>}
-                    </div>
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
+          <OtherThings />
         </div>
       </section>
     </main>
