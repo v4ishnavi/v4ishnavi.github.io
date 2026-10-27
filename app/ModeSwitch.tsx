@@ -5,7 +5,7 @@ import type {Mode} from '../lib/posts';
 function apply(mode: Mode) {
   document.documentElement.dataset.mode = mode;
   try {
-    localStorage.setItem('mode', mode);
+    sessionStorage.setItem('mode', mode);
   } catch {}
 }
 

@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 const sans = Inter({subsets: ['latin'], variable: '--font-sans'});
 const serif = Newsreader({subsets: ['latin'], variable: '--font-serif', style: ['normal', 'italic']});
 
-// Runs before paint so a returning "life" visitor never sees the research view flash.
-const modeScript = `try{var d=document.documentElement,m=new URLSearchParams(location.search).get('mode')||localStorage.getItem('mode'),t=localStorage.getItem('theme');if(m==='life'||m==='research')d.dataset.mode=m;if(t==='light'||t==='dark')d.dataset.theme=t}catch(e){}`;
+// Runs before paint. New visits open in professional mode; the chosen mode only sticks for the current tab.
+const modeScript = `try{var d=document.documentElement,m=new URLSearchParams(location.search).get('mode')||sessionStorage.getItem('mode'),t=localStorage.getItem('theme');if(m==='life'||m==='research')d.dataset.mode=m;if(t==='light'||t==='dark')d.dataset.theme=t}catch(e){}`;
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
