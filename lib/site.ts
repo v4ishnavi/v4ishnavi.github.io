@@ -52,8 +52,8 @@ export const experience = [
 // Teaching and club work, shown in "professional" mode.
 export const contributions = [
   {role: 'Teaching Assistant', org: 'Responsible and Safe AI Systems', when: '2026', note: 'Mentored student projects aimed at WACV and ICLR.'},
-  {role: 'AI safety fundamentals workshop', org: 'GSFCU', when: '2026', note: 'Hosted a two-day workshop as part of the Responsible and Safe AI Systems course.'},
   {role: 'Teaching Assistant', org: 'Introduction to Film Studies', when: '2025', note: ''},
+  {role: 'AI safety fundamentals workshop', org: 'GSFCU', when: '2025', note: 'Hosted a two-day workshop.'},
   {role: 'Teaching Assistant', org: 'Introduction to Statistical Signal Processing', when: '2025', note: 'Under Prof. Santosh Nannuru.'},
   {role: 'Apex Body Member', org: 'IIIT Hyderabad', when: '2024 – 2025', note: ''},
   {role: 'Apex Mentor', org: 'IIIT Hyderabad', when: '2023 – 2024', note: 'Helped introduce incoming students to the institute.'},
