@@ -1,3 +1,199 @@
-'use client';
-import {useState} from 'react';import Link from 'next/link';import {projects,publications,writingSources} from '../lib/content';import {posts} from '../lib/writing';
-export default function Home(){const[mode,setMode]=useState<'research'|'life'>('research');return <main><section className="hero" id="about"><div className="eyebrow"><span className="dot"/> online notebook <div className="switch" role="group" aria-label="Site mode"><button className={mode==='research'?'active':''} onClick={()=>setMode('research')} aria-pressed={mode==='research'}>⚙ research</button><button className={mode==='life'?'active':''} onClick={()=>setMode('life')} aria-pressed={mode==='life'}>✳ life</button></div></div><h1>Hi, I’m Vaish<span className="accent">.</span></h1>{mode==='research'?<><p className="intro">I’m interested in how machines learn to understand the world — especially how they reason about <em>time.</em></p><p className="smallcopy">I work on temporal reasoning, interpretability, and multimodal learning. I studied ECE (Honours) at IIIT Hyderabad and currently work as a Data Scientist at Mastercard Research.</p></>:<><p className="intro">I like making things, asking too many questions, and writing down thoughts before they disappear.</p><p className="smallcopy">Somewhere between research, reading, writing, and the rest of being a person.</p></>}<div className="links"><a href="https://github.com/v4ishnavi" target="_blank" rel="noreferrer">github ↗</a><a href="mailto:vaishnavishivkumar0@gmail.com">email ↗</a><a href="/resume.pdf">résumé ↗</a></div></section>{mode==='research'?<><section id="research"><div className="sectionHead"><h2>Research & things I’m working on</h2><span>selected</span></div><div className="rows">{projects.map((p,i)=><Link key={p.slug} className="row" href={`/research/${p.slug}`}><span className="index">{String(i+1).padStart(2,'0')}</span><div><strong>{p.title}</strong><small>{p.subtitle}</small></div><span className="arrow">↗</span></Link>)}</div></section><section><div className="sectionHead"><h2>Selected publications</h2></div>{publications.map(p=><div className="paper" key={p.title}><strong>{p.title}</strong><span>{p.venue}</span></div>)}</section></>:<section><div className="sectionHead"><h2>Other things</h2></div><p className="smallcopy">Student journalism, little projects, essays, curiosities, and various rabbit holes.</p><div className="rows">{projects.filter(p=>p.category==='other projects').map(p=><Link className="row" href={`/research/${p.slug}`} key={p.slug}><div><strong>{p.title}</strong><small>{p.description}</small></div><span className="arrow">↗</span></Link>)}</div></section>}<section id="writing"><div className="sectionHead"><h2>{mode==='research'?'Writing':'Words & thoughts'}</h2><span>essays & notes</span></div>{posts.filter(p=>mode==='life'?p.mode==='life':p.mode==='research').length? <div className="rows">{posts.filter(p=>mode==='life'?p.mode==='life':p.mode==='research').map(p=><Link className="row" key={p.slug} href={`/writing/${p.slug}`}><div><strong>{p.title}</strong><small>{p.date} · {p.source}</small></div><span className="arrow">↗</span></Link>)}</div>:<p className="smallcopy">I publish essays in a couple of different corners of the internet. The individual article archive will appear here once the posts are imported and verified.</p>}<div className="sources">{writingSources.map(s=><a target="_blank" rel="noreferrer" href={s.url} key={s.url}>{s.name} ↗</a>)}</div></section><section id="elsewhere"><div className="sectionHead"><h2>Elsewhere on the internet</h2></div><p className="smallcopy">Want to talk about research, interesting ideas, or something completely unrelated?</p><div className="links"><a href="https://github.com/v4ishnavi">github ↗</a><a href="mailto:vaishnavishivkumar0@gmail.com">say hello ↗</a></div></section></main>}
+import Link from 'next/link';
+import {experience, otherThings, profile, publications} from '../lib/site';
+import {research, stuff} from '../lib/research';
+import {formatDate, posts, type Post} from '../lib/posts';
+
+function PostList({items}: {items: Post[]}) {
+  return (
+    <ul className="rows">
+      {items.map((p) => (
+        <li key={p.slug}>
+          <Link className="row" href={`/writing/${p.slug}/`}>
+            <div>
+              <strong>{p.title}</strong>
+              <small>
+                {formatDate(p.date)} · {p.readingMinutes} min read · {p.publication}
+              </small>
+            </div>
+            <span className="arrow">↗</span>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export default function Home() {
+  const professional = posts.filter((p) => p.mode === 'research');
+  const personal = posts.filter((p) => p.mode === 'life');
+
+  return (
+    <main>
+      <section className="hero" id="about">
+        <p className="name">{profile.name}</p>
+        <h1>Hello, I’m Vaish!</h1>
+
+        <div className="only-research">
+          <p className="intro">
+            I think about how machines learn to understand the world, and occasionally write about understanding my own.
+          </p>
+          <p className="copy">
+            Currently exploring temporal reasoning, interpretability, and video models. Before that: code-mixed NLP, federated
+            learning fairness, graph explainability and network inference.
+          </p>
+        </div>
+        <div className="only-life">
+          <p className="intro">
+            I write things down before they disappear: letters, checkpoints, songs on repeat, evenings in Gurgaon.
+          </p>
+          <p className="copy">
+            Most of it lives on <a href="https://tacksforsnaccs.substack.com">tacksforsnaccs</a>. Outside of that: student
+            journalism, film, philosophy, generative art, and long conversations.
+          </p>
+        </div>
+
+        <dl className="status">
+          <dt>Previously</dt>
+          <dd>B.Tech (Honours) in ECE, IIIT Hyderabad · Precog Lab</dd>
+          <dt>Currently</dt>
+          <dd>Data Scientist, Mastercard AI Garage</dd>
+        </dl>
+
+        <div className="links">
+          {profile.links.map((l) => (
+            <a key={l.label} href={l.url} target={l.url.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
+              {l.label} ↗
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section id="research" className="only-research">
+        <h2>Research &amp; things I’m working on</h2>
+        <ol className="rows">
+          {research.map((r, i) => (
+            <li key={r.slug}>
+              <Link className="row" href={`/research/${r.slug}/`}>
+                <span className="index">{String(i + 1).padStart(2, '0')}</span>
+                <div>
+                  <strong>{r.title}</strong>
+                  <small>{r.tags}</small>
+                </div>
+                <span className="arrow">↗</span>
+              </Link>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="only-research">
+        <h2>Publications</h2>
+        <ul className="rows">
+          {publications.map((p) => (
+            <li key={p.title}>
+              <a className="row" href={p.url} target="_blank" rel="noreferrer">
+                <div>
+                  <strong>{p.title}</strong>
+                  <small>
+                    {p.authors} · <em>{p.venue}</em>
+                  </small>
+                </div>
+                <span className="arrow">↗</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="writing">
+        <div className="head">
+          <h2>Writing</h2>
+          <Link className="soft" href="/writing/">
+            all posts →
+          </Link>
+        </div>
+        <div className="only-research">
+          <PostList items={professional} />
+          <p className="copy">
+            More technical essays on the way. The personal writing lives under <button className="inline" data-mode-link="life">✳ life</button>.
+          </p>
+        </div>
+        <div className="only-life">
+          <PostList items={personal} />
+        </div>
+      </section>
+
+      <section className="only-research">
+        <h2>Experience</h2>
+        <ul className="rows">
+          {experience.map((e) => (
+            <li key={e.org + e.role} className="row static">
+              <div>
+                <strong>
+                  {e.role}, {e.org}
+                </strong>
+                <small>{e.note}</small>
+              </div>
+              <span className="when">{e.when}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section id="stuff">
+        <h2 className="only-research">Stuff I’ve made</h2>
+        <h2 className="only-life">Other things</h2>
+        <div className="only-research">
+          <p className="copy">Course projects, internship work and small experiments, mostly on GitHub.</p>
+          <ul className="cards">
+            {stuff.map((s) => {
+              const body = (
+                <>
+                  <span className="tag">{s.tag}</span>
+                  <strong>{s.title}</strong>
+                  <small>{s.note}</small>
+                </>
+              );
+              return (
+                <li key={s.title}>
+                  {s.url ? (
+                    <a className="card" href={s.url} target="_blank" rel="noreferrer">
+                      {body}
+                    </a>
+                  ) : (
+                    <div className="card">{body}</div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <div className="only-life">
+          <p className="copy">Student journalism, miscellaneous projects, and things I find interesting.</p>
+          <ul className="rows">
+            {otherThings.map((o) => (
+              <li key={o.title}>
+                {o.url ? (
+                  <a className="row" href={o.url} target="_blank" rel="noreferrer">
+                    <div>
+                      <strong>{o.title}</strong>
+                      {o.note && <small>{o.note}</small>}
+                    </div>
+                    <span className="arrow">↗</span>
+                  </a>
+                ) : (
+                  <div className="row static">
+                    <div>
+                      <strong>{o.title}</strong>
+                      {o.note && <small>{o.note}</small>}
+                    </div>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    </main>
+  );
+}

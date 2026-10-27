@@ -1,3 +1,48 @@
-import type {Metadata} from 'next';import './globals.css';
-export const metadata:Metadata={title:{default:'Vaishnavi Shivkumar — vaish.',template:'%s | vaish.'},description:'Research, writing and projects by Vaishnavi Shivkumar.'};
-export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body><div className="shell"><header className="header"><a className="logo" href="/">vaish<span>.</span></a><nav aria-label="Main navigation"><a href="/#about">about</a><a href="/#research">research</a><a href="/#writing">writing</a><a href="/#elsewhere">elsewhere</a></nav></header>{children}<footer>© {new Date().getFullYear()} Vaishnavi Shivkumar <span>made with curiosity ☼</span></footer></div></body></html>}
+import type {Metadata} from 'next';
+import {Inter, Newsreader} from 'next/font/google';
+import Link from 'next/link';
+import ModeSwitch from './ModeSwitch';
+import {profile} from '../lib/site';
+import './globals.css';
+
+export const metadata: Metadata = {
+  title: {default: 'Vaishnavi Shivkumar', template: '%s · vaish.'},
+  description: 'Research, writing and other things by Vaishnavi Shivkumar.',
+};
+
+const sans = Inter({subsets: ['latin'], variable: '--font-sans'});
+const serif = Newsreader({subsets: ['latin'], variable: '--font-serif', style: ['normal', 'italic']});
+
+// Runs before paint so a returning "life" visitor never sees the research view flash.
+const modeScript = `try{var m=new URLSearchParams(location.search).get('mode')||localStorage.getItem('mode');if(m==='life'||m==='research')document.documentElement.dataset.mode=m}catch(e){}`;
+
+export default function RootLayout({children}: {children: React.ReactNode}) {
+  return (
+    <html lang="en" data-mode="research" className={`${sans.variable} ${serif.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{__html: modeScript}} />
+      </head>
+      <body>
+        <div className="shell">
+          <header className="header">
+            <Link className="logo" href="/">
+              vaish<span>.</span>
+            </Link>
+            <nav aria-label="Main">
+              <Link href="/#about">about</Link>
+              <Link href="/#research" data-mode-link="research">research</Link>
+              <Link href="/writing/">writing</Link>
+              <Link href="/#stuff">stuff</Link>
+            </nav>
+          </header>
+          <ModeSwitch />
+          {children}
+          <footer>
+            <span>© {new Date().getFullYear()} {profile.name}</span>
+            <span className="soft">made with curiosity ☼</span>
+          </footer>
+        </div>
+      </body>
+    </html>
+  );
+}
