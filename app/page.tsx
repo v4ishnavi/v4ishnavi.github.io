@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import {basePath, contributions, experience, profile, publications} from '../lib/site';
+import {basePath, contributions, experience, profile, publications, teaching} from '../lib/site';
 import {research, type ResearchItem} from '../lib/research';
 import {writing, type ListedPost} from '../lib/posts';
 import PingList from './PingList';
@@ -12,6 +12,24 @@ function PostList({items}: {items: ListedPost[]}) {
       {items.map((p) => (
         <li key={p.slug}>
           <PostRow p={p} detail={'external' in p ? p.publication : `${p.readingMinutes} min read · ${p.publication}`} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function ContributionList({items}: {items: typeof teaching}) {
+  return (
+    <ul className="rows">
+      {items.map((c) => (
+        <li key={c.role + c.org} className="row static">
+          <div>
+            <strong>
+              {c.role}, {c.org}
+            </strong>
+            {c.note && <small>{c.note}</small>}
+          </div>
+          <span className="when">{c.when}</span>
         </li>
       ))}
     </ul>
@@ -170,19 +188,11 @@ export default function Home() {
 
       <section className="only-research">
         <h2>Teaching &amp; other contributions</h2>
-        <ul className="rows">
-          {contributions.map((c) => (
-            <li key={c.role + c.org} className="row static">
-              <div>
-                <strong>
-                  {c.role}, {c.org}
-                </strong>
-                {c.note && <small>{c.note}</small>}
-              </div>
-              <span className="when">{c.when}</span>
-            </li>
-          ))}
-        </ul>
+        <ContributionList items={teaching} />
+        <details className="more-toggle">
+          <summary>More</summary>
+          <ContributionList items={contributions} />
+        </details>
       </section>
 
       <section id="stuff">
