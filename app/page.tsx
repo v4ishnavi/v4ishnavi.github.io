@@ -69,8 +69,7 @@ export default function Home() {
             Writing, reading, tinkering, dilly dallying.
           </p>
           <p className="copy">
-            Most of it lives on tacksforsnaccs. Outside of that: student
-            journalism and generative art.
+            Other interests: literature, philosophy &amp; extroversion escapades.
           </p>
         </div>
 
