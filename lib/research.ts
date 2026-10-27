@@ -20,13 +20,8 @@ export const research: ResearchItem[] = [
     title: 'Understanding Time in Video Models',
     tags: 'Temporal reasoning · Interpretability',
     status: 'ongoing',
-    summary: 'Do video and world models learn latent symbolic rules from continuous trajectories?',
-    details: [
-      'I am designing probes to test whether video and world models pick up latent symbolic or rule-based structure from continuous trajectories, rather than only surface-level motion statistics.',
-      'This is connected to reasoning and world-model work with Prof. Makarand Tapaswi.',
-      'Some of the thinking behind this is in my essay on designing systems to reason temporally.',
-    ],
-    links: [{label: 'Essay: Designing systems to reason temporally', url: '/writing/designing-systems-to-reason-temporally/'}],
+    summary: 'Something is brewing :>',
+    details: ['With Prof. Makarand Tapaswi and Prof. Ponnurangam Kumaraguru (PK).'],
   },
   {
     slug: 'radbench',
