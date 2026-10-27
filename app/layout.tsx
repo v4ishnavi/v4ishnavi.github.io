@@ -41,7 +41,13 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           {children}
           <footer>
             <span>© {new Date().getFullYear()} {profile.name}</span>
-            <span className="soft">made with curiosity ☼</span>
+            <span className="soft">
+              inspired by{' '}
+              <a href="https://www.thariq.io/" target="_blank" rel="noreferrer">
+                thariq.io
+              </a>
+              , edited with claude, designed by me :&gt;
+            </span>
           </footer>
         </div>
       </body>
