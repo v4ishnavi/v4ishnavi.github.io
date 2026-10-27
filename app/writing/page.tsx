@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import Link from 'next/link';
 import {formatDate, posts} from '../../lib/posts';
+import PingList from '../PingList';
 
 export const metadata: Metadata = {title: 'Writing'};
 
@@ -60,6 +61,13 @@ export default function WritingIndex() {
           )}
         </section>
       ))}
+      <section>
+        <div className="head">
+          <h2>For Ping!</h2>
+          <span className="soft">IIIT Hyderabad’s student publication</span>
+        </div>
+        <PingList />
+      </section>
     </main>
   );
 }

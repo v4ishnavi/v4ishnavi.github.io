@@ -47,7 +47,7 @@ export const experience = [
 
 // Non-research things, shown in "life" mode.
 export const otherThings: {title: string; note: string; url?: string; image?: string}[] = [
-  {title: 'Chief Editor, Student Media Body', note: 'Student journalism at IIIT Hyderabad.'},
+  {title: 'Chief Editor, Ping!', note: 'IIIT Hyderabad’s student publication.', url: 'https://pingiiit.org/'},
   {title: 'Head of Content Writing, College Cultural Fest', note: ''},
   {title: 'TA, Introduction to Film Studies', note: ''},
   {title: 'Apex Council Head, Student Mentorship Body', note: ''},

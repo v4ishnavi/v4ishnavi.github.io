@@ -2,6 +2,7 @@ import Link from 'next/link';
 import {basePath, experience, otherThings, profile, publications} from '../lib/site';
 import {research, stuff} from '../lib/research';
 import {formatDate, posts, type Post} from '../lib/posts';
+import PingList from './PingList';
 
 function PostList({items}: {items: Post[]}) {
   return (
@@ -134,6 +135,14 @@ export default function Home() {
             </a>
           </p>
         </div>
+      </section>
+
+      <section className="only-life" id="ping">
+        <div className="head">
+          <h2>Student journalism</h2>
+          <span className="soft">for Ping!, IIIT Hyderabad’s student publication</span>
+        </div>
+        <PingList />
       </section>
 
       <section className="only-research">
