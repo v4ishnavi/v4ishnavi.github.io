@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import {basePath, experience, otherThings, profile, publications} from '../lib/site';
+import {basePath, contributions, experience, otherThings, profile, publications} from '../lib/site';
 import {research, stuff, type ResearchItem} from '../lib/research';
 import {writing, type ListedPost} from '../lib/posts';
 import PingList from './PingList';
@@ -127,7 +127,7 @@ export default function Home() {
         <div className="only-research">
           <PostList items={professional} />
           <p className="copy">
-            More technical essays on the way. The personal writing lives under <button className="inline" data-mode-link="life">✳ life</button>.
+            More technical essays on the way. The personal writing lives under <button className="inline" data-mode-link="life">✳ personal</button>.
           </p>
         </div>
         <div className="only-life">
@@ -166,6 +166,23 @@ export default function Home() {
         </ul>
       </section>
 
+      <section className="only-research">
+        <h2>Teaching &amp; other contributions</h2>
+        <ul className="rows">
+          {contributions.map((c) => (
+            <li key={c.role + c.org} className="row static">
+              <div>
+                <strong>
+                  {c.role}, {c.org}
+                </strong>
+                {c.note && <small>{c.note}</small>}
+              </div>
+              <span className="when">{c.when}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <section id="stuff">
         <h2 className="only-research">Stuff I’ve made</h2>
         <h2 className="only-life">Other things</h2>
@@ -197,7 +214,7 @@ export default function Home() {
           </ul>
         </div>
         <div className="only-life">
-          <p className="copy">Student journalism, miscellaneous projects, and things I find interesting.</p>
+          <p className="copy">Writing, tinkering &amp; dilly dallying.</p>
           <ul className="rows">
             {otherThings.map((o) => (
               <li key={o.title}>

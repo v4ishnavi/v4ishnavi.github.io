@@ -34,10 +34,10 @@ export default function ModeSwitch() {
   return (
     <div className="switch" role="group" aria-label="What would you like to see?">
       <button className={mode === 'research' ? 'active' : ''} aria-pressed={mode === 'research'} onClick={() => choose('research')}>
-        <span aria-hidden>◉</span> research
+        <span aria-hidden>◉</span> professional
       </button>
       <button className={mode === 'life' ? 'active' : ''} aria-pressed={mode === 'life'} onClick={() => choose('life')}>
-        <span aria-hidden>✳</span> life
+        <span aria-hidden>✳</span> personal
       </button>
     </div>
   );

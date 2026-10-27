@@ -43,8 +43,18 @@ export const research: ResearchItem[] = [
     summary: 'Who benefits from federated learning when clients have very different resources?',
     details: [
       'Studied client-level fairness and allocative harms under heterogeneous resource constraints.',
-      'A parallel thread looked at efficient learning for resource-weak settings, including binarized factor models.',
-      'In collaboration with Saurav Prakash and Sheetal Kalyani (IIT Madras), Lav Varshney (UIUC) and Praneeth Vepakomma (MBZUAI).',
+      'With Praneeth Vepakomma, Lav Varshney and Saurav Prakash (UIUC).',
+    ],
+  },
+  {
+    slug: 'federated-efficiency',
+    title: 'Efficient Federated Learning',
+    tags: 'Resource-weak clients · Binarized models',
+    status: 'past research',
+    summary: 'Making federated learning cheaper for clients with little compute.',
+    details: [
+      'Looked at efficient learning for resource-weak settings, including binarized factor models.',
+      'With Saurav Prakash and Sheetal Kalyani.',
     ],
   },
   {

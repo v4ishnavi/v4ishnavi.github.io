@@ -49,6 +49,21 @@ export const experience = [
   {org: 'Celebal Technologies', role: 'ML Intern', when: '2023', note: 'NILM and early sensor-fault detection.'},
 ];
 
+// Teaching and club work, shown in "professional" mode.
+export const contributions = [
+  {role: 'Teaching Assistant', org: 'Responsible and Safe AI Systems', when: '2026', note: 'Mentored student projects aimed at WACV and ICLR.'},
+  {role: 'AI safety fundamentals workshop', org: 'GSFCU', when: '2026', note: 'Hosted a two-day workshop as part of the Responsible and Safe AI Systems course.'},
+  {role: 'Teaching Assistant', org: 'Introduction to Film Studies', when: '2025', note: ''},
+  {role: 'Teaching Assistant', org: 'Introduction to Statistical Signal Processing', when: '2025', note: 'Under Prof. Santosh Nannuru.'},
+  {role: 'Apex Body Member', org: 'IIIT Hyderabad', when: '2024 – 2025', note: ''},
+  {role: 'Apex Mentor', org: 'IIIT Hyderabad', when: '2023 – 2024', note: 'Helped introduce incoming students to the institute.'},
+  {role: 'Content Writing Head', org: 'Felicity, IIIT Hyderabad', when: '2023 – 2025', note: 'Wrote for Felicity’24, then led the fest’s content writing team.'},
+  {role: 'Creative Works Member', org: 'LitClub', when: '2022 – 2024', note: 'Led two treasure hunts with 400+ participants each.'},
+  {role: 'Member', org: 'The Music Club', when: '2023 – 2024', note: 'Social media, design and finance teams for Meltdown’24, the club’s annual metal event.'},
+  {role: 'Member of Parliament', org: 'Students’ Parliament', when: '2023 – 2024', note: 'Hostel, PR and internal affairs committees.'},
+  {role: 'Management and Tech Team', org: 'Electronics and Robotics Club', when: '2022 – 2024', note: ''},
+];
+
 // Non-research things, shown in "life" mode.
 export const otherThings: {title: string; note: string; url?: string; image?: string}[] = [
   {title: 'Chief Editor, Ping!', note: 'IIIT Hyderabad’s student publication.', url: 'https://pingiiit.org/'},

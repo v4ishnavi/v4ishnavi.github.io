@@ -35,8 +35,8 @@ CI can't do it), then commit and push:
 npm run sync       # refreshes content/posts.json
 git commit -am "Sync posts" && git push
 ```
-Every post from `vaishnavishivkumar` lands under ◉ research, except the ones listed in `MODE_OVERRIDES`
-in `scripts/sync-substack.mjs`, which go under ✳ life. *The girlboss dad* is already listed there.
+Every post from `vaishnavishivkumar` lands under ◉ professional, except the ones listed in `MODE_OVERRIDES`
+in `scripts/sync-substack.mjs`, which go under ✳ personal. *The girlboss dad* is already listed there.
 
 ## Deploy
 
