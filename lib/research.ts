@@ -36,7 +36,6 @@ export const research: ResearchItem[] = [
     tags: 'Temporal reasoning · Interpretability',
     status: 'ongoing',
     summary: 'Something is brewing :>',
-    links: [{label: 'Interpreting Physics in Video World Models', url: 'https://arxiv.org/abs/2602.07050'}],
     details: [
       'With Prof. Makarand Tapaswi and Prof. Ponnurangam Kumaraguru (PK).',
     ],
