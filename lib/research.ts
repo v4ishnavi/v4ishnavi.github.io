@@ -39,9 +39,6 @@ export const research: ResearchItem[] = [
     links: [{label: 'Interpreting Physics in Video World Models', url: 'https://arxiv.org/abs/2602.07050'}],
     details: [
       'With Prof. Makarand Tapaswi and Prof. Ponnurangam Kumaraguru (PK).',
-      'I am interested in how video world models represent time. Models like VideoMAE and V-JEPA 2 do well on many temporal reasoning tasks, but we know very little about how they represent temporal information internally.',
-      'Can we causally decode temporally dependent rules from these representations? That is, does a video world model causally encode an understanding of time-based properties? And is there a hierarchy to it, from simple properties like repetition up to temporal relationships?',
-      'This builds on Sonia Joseph et al.’s work on interpreting physics in video world models, which traced where physical properties emerge inside V-JEPA 2. I want to ask the same question of time. I’m starting with temporal repetition, and already have baseline experiments for it.',
     ],
   },
   {
